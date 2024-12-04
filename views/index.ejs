@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>홈</title>
+    <link rel="stylesheet" href="/main.css">
+</head>
+
+<body>
+    <% if(login) { %>
+        <%- include('login_nav.ejs') %>
+        <a href="/write">글작성하기</a>
+        <a href="/list/1">리스트보기</a>
+    <% } else { %>
+        <%- include('nav.ejs') %>
+    <% } %>
+</body>
+</html>
