@@ -59,9 +59,10 @@ const upload = multer({
 });
 
 // 몽고디비 불러오기
+let connectDB = require('./database.js');
+
 let db
-const url = process.env.DB_URL;
-new MongoClient(url).connect().then((client)=>{
+connectDB.then((client)=>{
   console.log('DB연결성공')
   db = client.db('myProject1');
   app.listen(process.env.PORT, () => {
@@ -322,3 +323,5 @@ app.post('/register', checkLogin, async (req, res) => {
     res.status(500).send("서버 에러입니다.");
   }
 })
+
+app.use('/shop', require('./routes/shop.js'));
